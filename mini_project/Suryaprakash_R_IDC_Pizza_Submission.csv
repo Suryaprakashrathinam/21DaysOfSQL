@@ -1,0 +1,17 @@
+﻿Name,Email Address,AnswerQuery
+Suryaprakash R,surya.hal.sp@gmail.com,select distinct category from pizza_types
+Suryaprakash R,surya.hal.sp@gmail.com,"select pizza_type_id, name, coalesce(ingredients, 'Missing Data') as ingredients from pizza_types limit 5"
+Suryaprakash R,surya.hal.sp@gmail.com,select * from pizzas where price is null
+Suryaprakash R,surya.hal.sp@gmail.com,select * from orders where date = '2015-01-01'
+Suryaprakash R,surya.hal.sp@gmail.com,select * from pizzas order by price desc
+Suryaprakash R,surya.hal.sp@gmail.com,"select * from pizzas where size in ('L', 'XL')"
+Suryaprakash R,surya.hal.sp@gmail.com,select * from pizzas where price between 15.00 and 17.00
+Suryaprakash R,surya.hal.sp@gmail.com,select * from pizza_types where lower(name) like '%chicken%'
+Suryaprakash R,surya.hal.sp@gmail.com,select * from orders where date = '2015-02-15' or time>='20:00:00'
+Suryaprakash R,surya.hal.sp@gmail.com,select sum(quantity) as total_pizzas_sold from order_details
+Suryaprakash R,surya.hal.sp@gmail.com,select avg(price) as avg_pizza_price from pizzas
+Suryaprakash R,surya.hal.sp@gmail.com,"select od.order_id, sum(od.quantity*p.price) as order_total from order_details od join pizzas p on od.pizza_id = p.pizza_id group by od.order_id"
+Suryaprakash R,surya.hal.sp@gmail.com,"select pt.category, sum(od.quantity) as total_qty_sold from order_details od join pizzas p on od.pizza_id = p.pizza_id join pizza_types pt on p.pizza_type_id = pt.pizza_type_id group by pt.category order by total_qty_sold desc"
+Suryaprakash R,surya.hal.sp@gmail.com,"select pt.category, sum(od.quantity) as total_qty_sold from order_details od join pizzas p on od.pizza_id = p.pizza_id join pizza_types pt on p.pizza_type_id = pt.pizza_type_id group by pt.category having sum(od.quantity) > 5000 order by total_qty_sold desc"
+Suryaprakash R,surya.hal.sp@gmail.com,select p.* from pizzas p left join order_details od on p.pizza_id = od.pizza_id where od.order_id is null
+Suryaprakash R,surya.hal.sp@gmail.com,"select p1.pizza_type_id, p1.size as size1, p1.price as price1, p2.size as size2, p2.price as price2, p2.price - p1.price as price_difference from pizzas p1 join pizzas p2 on p1.pizza_type_id = p2.pizza_type_id and p1.size<p2.size order by p1.pizza_type_id, size1, size2"
